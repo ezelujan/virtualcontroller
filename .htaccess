@@ -1,0 +1,8 @@
+RewriteEngine on
+RewriteRule ^landing$           index.php?c=views
+
+RewriteRule ^inicio$            index.php?c=views&a=dashboard
+RewriteRule ^login$             index.php?c=auth&a=login
+RewriteRule ^salir$             index.php?c=auth&a=logout
+
+

@@ -1,0 +1,811 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+/* Boton volver arriba */
+.ir-arriba{
+    /* display: inline-block; */
+    display: none;
+    /* padding: 10px; */
+    /* background: rgba(52, 73, 94, 0.8); */
+    font-size: 50px;
+    color: #000;
+    cursor: pointer;
+    position: fixed;
+    z-index: 1000;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 100px;
+}
+
+/* Barra de navegacion */
+nav{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2000;
+    display: flex;
+    justify-content: flex-start;
+}
+nav a{
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+}
+/* Icono de las tres rayas horizontales */
+.menu{
+    width: 30px;
+    padding: 2px;
+    background: #fff;
+    display: flex;
+    margin: 6px;
+    border-radius: 30px;
+}
+
+/* Menu */
+.cursormenu{
+    display: block;
+    animation: MoverHaciaIzquierda 1s ease-in;
+    z-index: 3000;
+}
+.iconomenu:hover{
+    cursor: pointer;
+}
+.fondomenu{
+    display: block;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    /* top: -100px; */
+    width: 100%;
+    height: 0;
+    z-index: 1001;
+}
+
+/* Al darle click en "Menu" */
+.enlaces{
+    position: fixed;
+    display: flex;
+    top: 0;
+    background: #000;
+    justify-content: space-around;
+    text-align: left;
+    /* align-items: center; */
+    padding-left: 150px;
+    height: 100vh;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    transition: all 1s ease;
+    background: rgba(52, 73, 94, 0.8);
+    /* background: #4B79A1;
+    background: -webkit-linear-gradient(to right, #283E51, #4B79A1);
+    background: linear-gradient(to right, #283E51, #4B79A1); */
+}
+.uno{
+    -webkit-clip-path: circle(0% at 0 0);
+    clip-path: circle(0% at 0 0);
+}
+.dos{
+    -webkit-clip-path: circle(40% at 0 50%);
+    clip-path: circle(40% at 0 50%);
+    /* -webkit-clip-path: circle(150.0% at 0 50%);
+    clip-path: circle(150.0% at 0 50%); */
+}
+
+/* Encabezado de la landing */
+header{
+    width: 100%;
+    height: 650px;
+    background-image: url(../img/Skewed.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+}
+header .textos{
+    margin-top: 152px;
+}
+header .titulo{
+    font-size: 65px;
+    animation: MoverHaciaDerecha 1s ease-in;
+}
+header .subtitulo{
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 32px;
+    animation: MoverHaciaIzquierda 1s ease-in;
+}
+header .boton{
+    display: inline-block;
+    padding: 7px;
+    width: 138px;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 19px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 16px;
+    animation: MoverHaciaArriba 1s ease-in;
+    transition: all 0.15s linear;
+}
+
+/* Ventana modal de login */
+.flex{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 4000;
+    overflow: auto;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+.contenido-modal{
+    position: relative;
+    background-color: #fff;
+    margin: auto;
+    width: 35%;
+    border-radius: 15px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+    animation: AbrirModal 1s;
+}
+.close{
+    color: #f2f2f2;
+    font-size: 30px;
+    font-weight: bold;
+}
+.close:hover{
+    color: #7f8c8d;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-header, .modal-footer{
+    padding: 8px 16px;
+    background: #34495e;
+    color: #f2f2f2;
+    font-size: 12px;
+}
+.modal-header{
+    border-radius: 10px 10px 0 0;
+    border-bottom: 1px solid #e9ecef;
+}
+.modal-body{
+    height: auto;
+    padding: 16px;
+    display: block;
+    margin: 5px 0 16px 0;
+}
+.modal-body p{
+    text-align: justify;
+}
+.modal-body label{
+    margin-bottom: 10px;
+    padding: 3px;
+    font-weight: 400;
+    display: block;
+}
+.modal-body input[type="email"],
+.modal-body input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #34495e;
+    background: #f0eeee;
+    outline: none;
+    height: 40px;
+    width: 100%;
+    padding: 10px;
+    color: #000;
+    font-size: 16px;
+    border-radius: 10px 10px 0 0;
+}
+.modal-body input[type="email"]:focus,
+.modal-body input[type="password"]:focus{
+    border-bottom: 2px solid #34495e;
+}
+.modal-footer{
+    border-radius: 0 0 10px 10px;
+    border-top: 1px solid #e9ecef;
+    padding-left: 75%;
+}
+
+/* Diseño del triangulo (sesgoarriba/sesgoabajo) */
+.sesgoabajo{
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 35vh 100vw;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+.sesgoarriba{
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-width: 35vh 100vw 0 0;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+
+/* Diseño del "sobre nosotros" */
+.contenedor-sobre-nosotros{
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    padding: 52px 0;
+    height: auto;
+}
+.contenedor-objetivos{
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    padding: 52px 0;
+    height: 450px;
+}
+.contenedor-equipo{
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    padding: 52px 0;
+    height: auto;
+}
+.contenedor-contactanos{
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    padding: 52px 0;
+    height: auto;
+}
+
+.sobre-nosotros{
+    text-align: center;
+    font-size: 56px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.slogan{
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 24px;
+}
+.parrafo{
+    margin-bottom: 13px;
+    font-weight: 300;
+    font-size: 17px;
+    text-align: justify;
+    line-height: 24px;
+    color: rgb(24,16,16);
+}
+.acerca-de .boton{
+    display: inline-block;
+    padding: 7px;
+    width: 138px;
+    font-weight: 300;
+    border: 1px solid rgba(24,16,16,.7);
+    color: rgb(24,16,16);
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 16px;
+    margin-top: 24px;
+}
+
+/* Caja (div) padre de los objetivos */
+.objetivos{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* div donde está el objetivo */
+.objetivo p{
+    margin-bottom: 13px;
+    font-weight: 300;
+    font-size: 17px;
+    text-align: justify;
+    line-height: 24px;
+    color: rgb(24,16,16);
+}
+
+/* Diseño de la seccion de galeria */
+.galeria{
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    display: flex;
+    position: relative; 
+    flex-wrap: wrap;
+}
+.imagenes{
+    width: 20%;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+}
+.imagenes img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Texto encima de la galeria */
+.encima{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(52, 73, 94, 0.815);
+}
+.encima h2{
+    position: relative;
+    top: 45%;
+    text-align: center;
+    color: #fff;
+}
+.encima div{
+    position: relative;
+    display: block;
+    top: 45%;
+    width: 40px;
+    height: 5px;
+    background: #fff;
+    margin: auto;
+}
+
+/* Diseño "nuestro equipo" */
+.cards{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+.card{
+    margin: 20px 0;
+    width: 30%;
+    height: 250px;
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.280);
+    box-shadow: 0px 0px 4px 0 rgba(52, 73, 94, 0.849);
+}
+.cards img{
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+/* Diseño nuestro equipo ".miembros" */
+.miembros{
+    height: 900px;
+    position: relative;
+    background-image: url(../img/fondo.png);
+    overflow: hidden;
+    background-attachment: fixed;
+    background-position: center;
+    padding-top: 130px;
+}
+
+/* Dieño del triangulo de nuestro equipo */
+.sesgoabajo-unico{
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 35vh 100vw;
+    border-style: solid;
+    border-color: transparent transparent #2c3e50 transparent;   
+}
+
+/* Diseño del titulo y subtitulo "Nuestro equipo" */
+.titulo-equipo, .subtitulo-equipo{
+    color: #fff;
+    text-align: center;
+}
+.titulo-equipo{
+    font-size: 56px;
+    margin-top: 48px;
+}
+.subtitulo-equipo{
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 64px;
+}
+
+/* Contactanos */
+footer{
+    background: #2c3e50;
+    height: auto;
+}
+.titulo-footer, .subtitulo-footer{
+    color: #fff;
+    text-align: center;
+    font-weight: 400;
+    font-size: 56px;
+}
+.subtitulo-footer{
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 64px;
+}
+
+/* Cajas de texto de contactanos */
+form{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: auto;
+}
+input[type="text"], input[type="email"]{
+    display: inline-block;
+    width: 48%;
+    padding: 13px;
+    border: none;
+    color: #fff;
+    font-family: 'Open Sans';
+    background: rgba(37,37,33,.7);
+    margin-bottom: 16px;
+    border-top: 5px solid rgba(37,37,33,.7);
+}
+.footer input[type="text"]:focus, 
+.footer input[type="email"]:focus, 
+.footer textarea:focus{
+    outline: none;
+    border-top: 5px solid rgba(255, 255, 255, 0.7);
+}
+textarea{
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 200px;
+    min-height: 200px;
+    background: rgba(37,37,33,.7);
+    padding: 13px;
+    border: none;
+    color: #fff;
+    font-family: 'Open Sans';
+    margin-bottom: 16px;
+}
+
+/* Boton de enviar mensaje */
+input[type="submit"]{
+    display: inline-block;
+    padding: 13px;
+    border: none;
+    color: #fff;
+    background: rgba(37,37,33,.7);
+    width: 96px;
+    border-radius: 5px;
+}
+
+/* Texto Copyright */
+.texto-copyright{
+    margin-top: 20px;
+    font-weight: 300;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+}
+
+.encuesta-dashboard{
+    padding: 30px;
+}
+.encuesta-dashboard > h3{
+    padding-bottom: 30px;
+    color: blue;
+    text-align: left;
+}
+.caja-pregunta{
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px 0 20px 0;
+}
+
+.confirma-encuesta{
+    width: 20px;
+    background: #a0a0a0;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 200px;
+}
+.caja-pregunta > p{
+    text-align: center;
+}
+.respuesta-excelente{
+    display: none;
+    color: green;
+}
+.respuesta-pesima{
+    display: none;
+    color: red;
+}
+.btn-cerrar-sesion > a{
+    margin-left: 30px;
+    padding: 10px;
+    text-decoration: none;
+    border: 1px solid #000;
+    border-radius: 20px;
+    background: #e4e3e3;
+    color: #000;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+}
+.btn-cerrar-sesion > a:hover{
+    background: rgb(177, 173, 173);
+}
+
+/* Responsive/Vista desde el celular */
+@media screen and (max-width:1200px){
+    .dos{
+        -webkit-clip-path: circle(50% at 0 50%);
+        clip-path: circle(50% at 0 50%);
+    }
+    .contenido-modal{
+        width: 70%;   
+    }
+}
+@media screen and (max-width:900px){
+    header .textos{
+        margin-top: 100px;
+    }
+    .card{
+        width: 48%;
+    }
+    .dos{
+        -webkit-clip-path: circle(55% at 0 50%);
+        clip-path: circle(55% at 0 50%);
+    }
+}
+@media screen and (max-width:700px){
+    .dos{
+        -webkit-clip-path: circle(60% at 0 50%);
+        clip-path: circle(60% at 0 50%);
+    }
+}
+@media screen and (max-width:662px){
+    header .titulo{
+        font-size: 78px;
+    }
+    header .subtitulo{
+        font-size: 35px;
+        margin-top: 32px;
+    }
+}
+@media screen and (max-width:629px){
+    header .titulo{
+        font-size: 60px;
+    }
+    header .subtitulo{
+        font-size: 25px;
+        margin-top: 32px;
+    }
+    header{
+        height: 550px;
+    }
+    .none{display: none}
+    .imagenes{
+        flex-grow: 1;
+    }
+    .miembros{
+        height: auto;
+    }
+    .especial{
+        display: none;
+    }
+    .contenedor-sobre-nosotros{
+        height: 550px;
+    }
+    .contenedor-objetivos{
+        height: 500px;
+    }
+    .contenedor-equipo{
+        height: 800px;
+    }
+    .dos{
+        -webkit-clip-path: circle(65% at 0 50%);
+        clip-path: circle(65% at 0 50%);
+    }
+    .ir-arriba{
+        font-size: 40px;
+        bottom: 10px;
+        right: 10px;
+    }
+}
+@media screen and (max-width:585px){
+    header .titulo{
+        font-size: 50px;
+    }
+    .card{
+        width: 98%;
+    }
+    .contenedor-equipo{
+        height: 1150px;
+    }
+    .contenedor-objetivos{
+        height: 600px;
+    }
+    .dos{
+        -webkit-clip-path: circle(70% at 0 50%);
+        clip-path: circle(70% at 0 50%);
+    }
+}
+@media screen and (max-width:471px){
+    .contenedor-objetivos{
+        height: 680px;
+    }
+    header{
+        height: 600px;
+    }
+    header .titulo{
+        font-size: 50px;
+    }
+    header .subtitulo{
+        font-size: 20px;
+        margin-top: 32px;
+    }
+    .contenedor-sobre-nosotros{
+        height: 750px;
+    }
+    .dos{
+        -webkit-clip-path: circle(110% at 0 50%);
+        clip-path: circle(110% at 0 50%);
+    }
+    .enlaces{
+        align-items: center;
+        padding: 0;
+    }
+}
+@media screen and (max-width:380px){
+    header .textos{
+        margin-top: 100px;
+    }
+    header .titulo{
+        font-size: 45px;
+    }
+    header .subtitulo{
+        font-size: 20px;
+        margin-top: 32px;
+    }
+    .sobre-nosotros{
+        font-size: 35px;
+    }
+    .slogan{
+        font-size: 18px;
+    }
+    .titulo-objetivos{
+        font-size: 35px;
+    }
+    .subtitulo-objetivos{
+        font-size: 18px;
+    }
+    .titulo-footer{
+        font-size: 38px;
+    }
+    .subtitulo-footer{
+        font-size: 16px;
+    }
+    .encima h2{
+        font-size: 16px;
+    }
+}
+
+/* Animacion para abrir modal login */
+@keyframes AbrirModal{
+    from{top:-330px; opacity: 0;}
+    to{top: 0; opacity: 1;}
+}
+
+/* Animaciones al cargar pagina */
+@keyframes MoverHaciaIzquierda{
+    0%{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+@keyframes MoverHaciaDerecha{
+    0%{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+@keyframes MoverHaciaArriba{
+    0%{
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+/* Animaciones al hacer scroll */
+@keyframes HaciaIzquierda-Scroll{
+    0%{
+        opacity: 0;
+        transform: translateX(300px);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+@keyframes HaciaDerecha-Scroll{
+    0%{
+        opacity: 0;
+        transform: translateX(-300px);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+@keyframes HaciaArriba-Scroll{
+    0%{
+        opacity: 0;
+        transform: translateY(200px);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+@keyframes HaciaAbajo-Scroll{
+    0%{
+        opacity: 0;
+        transform: translateY(-200px);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
