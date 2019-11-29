@@ -517,6 +517,16 @@ input[type="submit"]{
     text-align: center;
     color: #fff;
 }
+.mas-info{
+    text-align: center;
+    /* margin-top: 20px; */
+}
+.link-contactanos{
+    color: #fff;
+    font-weight: 300;
+    font-size: 12px;
+
+}
 
 .encuesta-dashboard{
     padding: 30px;

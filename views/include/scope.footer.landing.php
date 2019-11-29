@@ -13,6 +13,9 @@
                 <div class="copyright">
                     <h4 class="texto-copyright">Copyright &copy; 2019 - Ezequiel Luján Escobar</h3>
                 </div>
+                <div class="mas-info">
+                    <a target="_blank" href="https://linktr.ee/ezequiel_147" class="link-contactanos">Más formas de contactarnos.</a>
+                </div>
             </div>
         </footer>
         <script src="views/assets/js/main.js"></script>
