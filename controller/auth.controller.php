@@ -3,7 +3,7 @@
 
     class AuthController{
         private $auth;
-        
+
         public function __CONSTRUCT(){
             $this->auth = new AuthModel();
         }
@@ -30,7 +30,7 @@
             }
         }
         public function logout(){
-			// session_unset();
+			      // session_unset();
             session_destroy();
             Header('Location: landing');
         }
